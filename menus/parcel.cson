@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable parcel': 'parcel:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'parcel'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'parcel:toggle' }
+      ]
+    ]
+  }
+]
