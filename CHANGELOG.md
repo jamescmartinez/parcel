@@ -1,3 +1,2 @@
-## 0.1.0 - First Release
-* Every feature added
-* Every bug fixed
+## 0.0.1 - Released 14 June 2014
+* Initial release!

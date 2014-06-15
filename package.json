@@ -2,8 +2,8 @@
   "name": "parcel",
   "main": "./lib/parcel",
   "version": "0.0.0",
-  "description": "A short description of your package",
-  "repository": "https://github.com/atom/parcel",
+  "description": "Atom package synchronization",
+  "repository": "https://github.com/jamescmartinez/parcel",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
