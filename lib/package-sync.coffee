@@ -51,6 +51,7 @@ class PackageSync
   # Public: Writes the current package list to the `packages.cson` configuration file.
   writePackageList: ->
     new PackageList().setPackages()
+    @displayMessage('Package list written to packages.cson')
 
   # Internal: Displays a message in the status bar.
   #
@@ -60,6 +61,7 @@ class PackageSync
   # timeout - An optional {Number} specifying the time in milliseconds until the message will be
   #           cleared.
   displayMessage: (message, timeout) ->
+    console.log('Parcel: ' + message)
     clearTimeout(@timeout) if @timeout?
     if @message?
       @message.setText(message)
@@ -127,8 +129,10 @@ class PackageSync
   installPackage: ->
     # Exit if there is already an installation running or if there are no more
     # packages to install.
-    return if @currentInstall? or @packagesToInstall.length is 0
-    @apmInstall(@packagesToInstall.shift())
+    if @currentInstall? or @packagesToInstall.length is 0
+      @displayMessage('There are no additional packages to install from packages.cson.')
+    else
+      @apmInstall(@packagesToInstall.shift())
 
   # Internal: Installs each of the packages in the given list.
   #
@@ -150,8 +154,10 @@ class PackageSync
   uninstallPackage: ->
     # Exit if there is already an installation running or if there are no more
     # packages to uninstall.
-    return if @currentUninstall? or @packagesToUninstall.length is 0
-    @apmUninstall(@packagesToUninstall.shift())
+    if @currentUninstall? or @packagesToUninstall.length is 0
+      @displayMessage('There are no additional packages to uninstall from packages.cson.')
+    else
+      @apmUninstall(@packagesToUninstall.shift())
 
   # Internal: Uninstalls each of the packages in the given list.
   #
