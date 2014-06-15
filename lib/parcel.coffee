@@ -5,9 +5,9 @@ loadModule = ->
   PackageSync ?= require './package-sync'
   packageSync ?= new PackageSync()
 
-installMissing = ->
+sync = ->
   loadModule()
-  packageSync.installMissing()
+  packageSync.sync()
 
 writePackageList = ->
   loadModule()
@@ -15,10 +15,10 @@ writePackageList = ->
 
 module.exports =
   activate: ->
-    # Register parcel:sync command to run installMissing()
+    # Register parcel:sync command to run sync()
     atom.workspaceView.command 'parcel:sync', ->
-      installMissing()
-    # Automatically run installMissing() when activated
-    installMissing()
+      sync()
+    # Automatically run sync() when activated
+    sync()
   deactivate: ->
     writePackageList()
