@@ -21,6 +21,8 @@ class PackageList
 
   # Public: Sets the list of packages to the list of available packages.
   setPackages: ->
+    if fs.existsSync(PackageList.getPackageListPath())
+      fs.unlinkSync(PackageList.getPackageListPath())
     CSON.writeFileSync(PackageList.getPackageListPath(),
                        {'packages': atom.packages.getAvailablePackageNames()})
 

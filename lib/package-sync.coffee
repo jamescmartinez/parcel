@@ -33,11 +33,10 @@ class PackageSync
   sync: ->
     packageList = new PackageList()
     if packageList.getPackages().length > 0
-      @displayMessage('test1')
       missing = @getMissingPackages()
       @installPackages(missing)
+      new PackageList().setPackages()
     else
-      @displayMessage('test2')
       new PackageList().setPackages()
 
   # Internal: Displays a message in the status bar.
