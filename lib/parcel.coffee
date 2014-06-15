@@ -1,13 +1,13 @@
-ParcelView = require './parcel-view'
+PackageSync = null
+packageSync = null
 
+loadModule = ->
+  PackageSync ?= require './package-sync'
+  packageSync ?= new PackageSync()
+
+# Register commands to be accessed by the menu and the Command Palette.
 module.exports =
-  parcelView: null
-
-  activate: (state) ->
-    @parcelView = new ParcelView(state.parcelViewState)
-
-  deactivate: ->
-    @parcelView.destroy()
-
-  serialize: ->
-    parcelViewState: @parcelView.serialize()
+  activate: ->
+    atom.workspaceView.command 'parcel:sync', ->
+      loadModule()
+      packageSync.sync()
