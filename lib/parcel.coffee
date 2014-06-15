@@ -5,9 +5,20 @@ loadModule = ->
   PackageSync ?= require './package-sync'
   packageSync ?= new PackageSync()
 
-# Register commands to be accessed by the menu and the Command Palette.
+installMissing = ->
+  loadModule()
+  packageSync.installMissing()
+
+writePackageList = ->
+  loadModule()
+  packageSync.writePackageList()
+
 module.exports =
   activate: ->
+    # Register parcel:sync command to run installMissing()
     atom.workspaceView.command 'parcel:sync', ->
-      loadModule()
-      packageSync.sync()
+      installMissing()
+    # Automatically run installMissing() when activated
+    installMissing()
+  deactivate: ->
+    writePackageList()

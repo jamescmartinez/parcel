@@ -30,14 +30,18 @@ class PackageSync
   timeout: null
 
   # Public: Installs any packages that are missing from the `packages.cson` configuration file.
-  sync: ->
+  installMissing: ->
     packageList = new PackageList()
     if packageList.getPackages().length > 0
       missing = @getMissingPackages()
       @installPackages(missing)
-      new PackageList().setPackages()
+      @writePackageList()
     else
-      new PackageList().setPackages()
+      @writePackageList()
+
+  # Public: Writes the current package list to the `packages.cson` configuration file.
+  writePackageList: ->
+    new PackageList().setPackages()
 
   # Internal: Displays a message in the status bar.
   #
