@@ -6,7 +6,7 @@
   "repository": "https://github.com/jamescmartinez/parcel",
   "license": "MIT",
   "engines": {
-    "atom": ">0.50.0"
+    "atom": ">0.200.0"
   },
   "dependencies": {
     "season": "~1.0"
