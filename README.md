@@ -1,5 +1,7 @@
 # Parcel: Package Sync for Atom
 
+## NOTE: This package is no longer maintained. Sorry!
+
 Parcel uses `~/.atom/packages.cson` to keep track of the packages that you have installed.
 
 ---
